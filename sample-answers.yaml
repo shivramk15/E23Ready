@@ -1,0 +1,24 @@
+# Sample answers for the example (Copilot) pack — for demo and testing only.
+# Deployment story: a bank division running Muse (multi-tenant SaaS)
+# on confidential codebases, with an agent that opens its own PRs.
+answers:
+  q01: supported
+  q02: partial
+  q03: partial
+  q04: "no"
+  q05: partial
+  q06: supported
+  q07: partial
+  q08: unknown
+  q09: unknown
+  q10: partial
+  q11: supported
+  q12: supported
+  q13: partial
+  q14: saas_multi_tenant
+  q15: division
+  q16: confidential
+  q17: moderate
+  q18: high
+  q19: moderate
+  q20: high

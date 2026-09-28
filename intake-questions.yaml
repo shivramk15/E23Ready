@@ -1,0 +1,140 @@
+# E23Ready intake questions — v1
+# 20 questions total:
+#   q01-q13  evidence  — one per checklist control in packs/example-vendor.yaml
+#   q14-q16  context   — deployment context for the model inventory entry
+#   q17-q20  e23_dimension — OSFI E-23 risk dimensions (low / moderate / high)
+version: 1
+questions:
+  - id: q01
+    short: soc2
+    category: evidence
+    checklist_item: soc2_type2
+    prompt: "Does the vendor provide a SOC 2 Type II report covering a 12-month period (shared under NDA)?"
+    help: "Ask for the report itself, not a marketing summary; check period coverage and scope."
+    options: [supported, partial, no, unknown]
+  - id: q02
+    short: iso27001
+    category: evidence
+    checklist_item: iso27001
+    prompt: "Does the vendor hold a current ISO 27001 certificate covering this product?"
+    help: "Check whether certification is product-specific or inherited from a parent platform."
+    options: [supported, partial, no, unknown]
+  - id: q03
+    short: residency
+    category: evidence
+    checklist_item: data_residency_canada
+    prompt: "Can customer data be kept in Canada (Canadian region, customer VPC, or on-prem), with PIPEDA obligations documented?"
+    help: "Multi-region SaaS with EU-only residency does not satisfy a Canadian bank."
+    options: [supported, partial, no, unknown]
+  - id: q04
+    short: selfhost
+    category: evidence
+    checklist_item: self_hosted
+    prompt: "Is there a self-hosted or customer-VPC inference option, so prompts and code never leave the bank?"
+    help: "Vendor-mediated SaaS inference only means no middle-box inspection."
+    options: [supported, partial, no, unknown]
+  - id: q05
+    short: subprocessors
+    category: evidence
+    checklist_item: sub_processor_register
+    prompt: "Does the vendor publish a sub-processor register with change-notification terms?"
+    help: "Six inference sub-processors across three clouds is the Copilot cautionary tale."
+    options: [supported, partial, no, unknown]
+  - id: q06
+    short: zeroret
+    category: evidence
+    checklist_item: zero_retention
+    prompt: "Is there a zero-retention / no-training-on-customer-data clause in the DPA?"
+    help: "Must be contractual and default, not a toggle the admin has to find."
+    options: [supported, partial, no, unknown]
+  - id: q07
+    short: modelcard
+    category: evidence
+    checklist_item: ai_model_card
+    prompt: "Does the vendor ship an AI model card: which models, which versions, what data they touch, where humans sit in the loop?"
+    help: "This is the E-23 inventory entry in vendor-supplied form."
+    options: [supported, partial, no, unknown]
+  - id: q08
+    short: pentest
+    category: evidence
+    checklist_item: pen_test_summary
+    prompt: "Is there an annual pen-test summary and a vulnerability disclosure program?"
+    help: "Summary under NDA is normal; absence entirely is a red flag."
+    options: [supported, partial, no, unknown]
+  - id: q09
+    short: incidentsla
+    category: evidence
+    checklist_item: incident_sla_24h
+    prompt: "Is the incident-notification SLA fast enough for the bank to hit its 24-hour OSFI reporting clock?"
+    help: "B-13: the bank reports to OSFI within 24 hours, so vendor notice must beat that."
+    options: [supported, partial, no, unknown]
+  - id: q10
+    short: exit
+    category: evidence
+    checklist_item: exit_continuity
+    prompt: "Are there business-continuity and exit terms: data export format and termination assistance?"
+    help: "B-10 demands exit provisions in the contract, not a support ticket."
+    options: [supported, partial, no, unknown]
+  - id: q11
+    short: auditrights
+    category: evidence
+    checklist_item: audit_rights
+    prompt: "Does the contract grant the bank audit rights, or the right to commission an independent audit?"
+    help: "B-10 core requirement; 'trust our SOC 2' is not audit rights."
+    options: [supported, partial, no, unknown]
+  - id: q12
+    short: indemnity
+    category: evidence
+    checklist_item: ip_indemnity
+    prompt: "Does the vendor indemnify the bank against IP claims on AI-generated output?"
+    help: "Copilot offers it; Cursor reportedly does not. Procurement notices."
+    options: [supported, partial, no, unknown]
+  - id: q13
+    short: iso42001
+    category: evidence
+    checklist_item: iso_42001
+    prompt: "What is the vendor's AI management posture (ISO 42001 or equivalent AI governance program)?"
+    help: "Emerging ask in 2026; Microsoft holds ISO 42001 for M365 Copilot."
+    options: [supported, partial, no, unknown]
+  - id: q14
+    short: deployment_model
+    category: context
+    prompt: "How is the tool deployed at this bank?"
+    help: "Determines data-flow scope for the inventory entry."
+    options: [saas_multi_tenant, saas_dedicated_region, customer_vpc, self_hosted, unknown]
+  - id: q15
+    short: user_population
+    category: context
+    prompt: "How large is the user population?"
+    help: "Blast radius if the vendor is compromised or the model misbehaves."
+    options: [individual, team, division, enterprise_wide, unknown]
+  - id: q16
+    short: data_classification
+    category: context
+    prompt: "What is the highest data classification the tool touches?"
+    help: "Source code counts as bank IP; production data access is a different league."
+    options: [public, internal, confidential, restricted, unknown]
+  - id: q17
+    short: complexity
+    category: e23_dimension
+    prompt: "E-23 dimension — model complexity: how complex and opaque is the system (simple rules to autonomous agent)?"
+    help: "Higher complexity means harder to explain to an examiner."
+    options: [low, moderate, high]
+  - id: q18
+    short: autonomy
+    category: e23_dimension
+    prompt: "E-23 dimension — autonomy: how much does it act without a human in the loop?"
+    help: "Agent that opens its own pull requests is high autonomy."
+    options: [low, moderate, high]
+  - id: q19
+    short: data_sensitivity
+    category: e23_dimension
+    prompt: "E-23 dimension — data sensitivity: how sensitive is the data the model can see or retain?"
+    help: "Customer data in prompts is the nightmare scenario."
+    options: [low, moderate, high]
+  - id: q20
+    short: customer_impact
+    category: e23_dimension
+    prompt: "E-23 dimension — customer impact: if the model is wrong or leaked, does a customer feel it?"
+    help: "Internal dev tooling is usually low; anything touching credit decisions is high."
+    options: [low, moderate, high]

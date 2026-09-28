@@ -1,0 +1,76 @@
+# DRAFT vendor pack — statuses from public research (2026-09-28), NOT verified.
+# Do not use for a real procurement decision. Verify every control against
+# montecarlodata.com/security, the current DPA, and the sub-processor list.
+# Covers the platform AND its AI monitoring features (the new E-23 surface).
+vendor: Monte Carlo Data, Inc.
+product: Monte Carlo (Data Observability platform, incl. AI monitors)
+pack_version: "0.1-draft"
+pack_status: draft
+pack_status_note: "Draft built from public attestations and third-party comparisons (Sept 2026). ISO 27001 evidence is a third-party attestation ~2 years old — re-verify on the vendor trust center. Their AI monitoring features are the new model-risk surface."
+last_reviewed: 2026-09-28
+checklist:
+  - id: soc2_type2
+    item: SOC 2 Type II report (12-month period, shared under NDA)
+    status: supported
+    evidence: "SOC 2 Type II — Microsoft 365 App Certification attestation (most recent 2024-05-31); company press describes a SOC 2 Type II certified platform."
+    source_url: "https://learn.microsoft.com/id-id/microsoft-365-app-certification/teams/monte-carlo-data-inc"
+  - id: iso27001
+    item: ISO 27001 certificate
+    status: supported
+    evidence: "Same Microsoft attestation: ISO 27001 Yes, ISO 27017 Yes. Record updated ~2 years ago — re-verify current certificate on the vendor trust center."
+    source_url: "https://learn.microsoft.com/id-id/microsoft-365-app-certification/teams/monte-carlo-data-inc"
+  - id: data_residency_canada
+    item: Data residency — Canada (region, customer VPC, or on-prem; PIPEDA documented)
+    status: unknown
+    evidence: "No Canada-specific data-residency evidence found in this pass."
+    source_url: "vendor security page — VERIFY"
+  - id: self_hosted
+    item: Self-hosted or customer-VPC inference option
+    status: partial
+    evidence: "Hybrid deployment: customer-hosted data store and optional customer-hosted agent documented. Not fully self-hosted."
+    source_url: "https://medium.com/@moid_55108/top-5-data-observability-tools-and-what-each-one-costs-6d39463d93f0"
+  - id: sub_processor_register
+    item: Sub-processor register with change-notification terms
+    status: unknown
+    evidence: "No public sub-processor register found in this pass."
+    source_url: "vendor security page — VERIFY"
+  - id: zero_retention
+    item: Zero-retention / no-training-on-customer-data DPA clause
+    status: unknown
+    evidence: "Monte Carlo's AI monitoring features process warehouse metadata; no public no-training/ZDR commitment found."
+    source_url: "vendor security page — VERIFY"
+  - id: ai_model_card
+    item: AI model card (models, versions, data touched, human-in-the-loop)
+    status: unknown
+    evidence: "No published model cards for Monte Carlo's ML monitors found."
+    source_url: "vendor security page — VERIFY"
+  - id: pen_test_summary
+    item: Annual pen-test summary and vulnerability disclosure program
+    status: unknown
+    evidence: "No public pen-test summary found in this pass."
+    source_url: "vendor trust center — VERIFY"
+  - id: incident_sla_24h
+    item: Incident notification SLA fast enough to beat the 24-hour OSFI clock
+    status: unknown
+    evidence: "No published contractual incident-notification SLA found."
+    source_url: "DPA / MSA — VERIFY"
+  - id: exit_continuity
+    item: Business continuity and exit (data export format, termination assistance)
+    status: unknown
+    evidence: "No published termination-assistance / data-export terms found in this pass."
+    source_url: "DPA / MSA — VERIFY"
+  - id: audit_rights
+    item: Bank's right to audit or commission an independent audit
+    status: unknown
+    evidence: "Audit-rights clause not confirmed from public docs in this pass."
+    source_url: "DPA / MSA — VERIFY"
+  - id: ip_indemnity
+    item: IP indemnity for AI-generated output
+    status: unknown
+    evidence: "Observability tool, not code generation; no public IP terms found."
+    source_url: "plan terms — VERIFY"
+  - id: iso_42001
+    item: AI management posture (ISO 42001 or equivalent)
+    status: unknown
+    evidence: "No ISO 42001 or equivalent AI management certification found publicly."
+    source_url: "vendor trust center — VERIFY"

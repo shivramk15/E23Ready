@@ -1,0 +1,75 @@
+# DRAFT vendor pack — statuses from public research (2026-09-28), NOT verified.
+# Do not use for a real procurement decision. Verify every control against
+# trust.github.com, the current GitHub DPA, and the sub-processor list.
+vendor: GitHub (Microsoft)
+product: GitHub Copilot (Business / Enterprise)
+pack_version: "0.1-draft"
+pack_status: draft
+pack_status_note: "Draft built from public compliance research and vendor docs (Sept 2026). Every entry is a starting point, not evidence. 'unknown' means not found publicly, not absent. Re-triage before any procurement use."
+last_reviewed: 2026-09-28
+checklist:
+  - id: soc2_type2
+    item: SOC 2 Type II report (12-month period, shared under NDA)
+    status: supported
+    evidence: "Independent compliance research (Sept 2026) confirms SOC 2 Type II in scope for Copilot; report obtainable via Enterprise Cloud compliance settings."
+    source_url: "https://github.com/nocodejim/shareddocrepo/blob/HEAD/docs/compliance/opus%20-research-ghcp.md"
+  - id: iso27001
+    item: ISO 27001 certificate
+    status: partial
+    evidence: "ISO 27001 in scope for Copilot per Sept 2026 compliance research; inherited from GitHub/Microsoft platform, not separately certified for Copilot itself. Say the split in RFPs."
+    source_url: "https://github.com/nocodejim/shareddocrepo/blob/HEAD/docs/compliance/artifact-4-compliance-risk-summary.md"
+  - id: data_residency_canada
+    item: Data residency — Canada (region, customer VPC, or on-prem; PIPEDA documented)
+    status: "no"
+    evidence: "GHE Cloud data residency pins inference to region — US and EU GA, Japan/Australia on roadmap, ~10% AI-credit surcharge. No Canada region in 2026."
+    source_url: "https://github.com/navendubrajesh/context-management-for-agents/blob/HEAD/context-management-for-CoPilot.md"
+  - id: self_hosted
+    item: Self-hosted or customer-VPC inference option
+    status: "no"
+    evidence: "No self-hosted inference; all inference runs on Azure/OpenAI/partner infrastructure."
+    source_url: "https://github.com/nocodejim/shareddocrepo/blob/HEAD/docs/compliance/opus%20-research-ghcp.md"
+  - id: sub_processor_register
+    item: Sub-processor register with change-notification terms
+    status: partial
+    evidence: "Public sub-processor list with 30-day advance notice for additions; but 6+ AI inference sub-processors across three cloud ecosystems, with varying data commitments."
+    source_url: "https://github.com/nocodejim/shareddocrepo/blob/HEAD/docs/compliance/opus%20-research-ghcp.md"
+  - id: zero_retention
+    item: Zero-retention / no-training-on-customer-data DPA clause
+    status: partial
+    evidence: "ZDR agreement with OpenAI; no training on Business/Enterprise data by contract. But: chat/agent/CLI prompts retained 28 days (IDE completions not retained); no formal Google ZDR term; Anthropic ZDR gap on preview features."
+    source_url: "https://www.marktechpost.com/2026/09/26/ai-coding-agents-for-enterprise-ip-indemnity-data-residency-and-500-seat-cost-compared/"
+  - id: ai_model_card
+    item: AI model card (models, versions, data touched, human-in-the-loop)
+    status: partial
+    evidence: "GitHub publishes a model-hosting reference (docs.github.com/en/copilot/reference/ai-models/model-hosting) naming models and hosting; full per-model cards not published."
+    source_url: "https://github.com/nocodejim/shareddocrepo/blob/HEAD/docs/compliance/opus%20-research-ghcp.md"
+  - id: pen_test_summary
+    item: Annual pen-test summary and vulnerability disclosure program
+    status: unknown
+    evidence: "No public pen-test summary for Copilot found in this pass."
+    source_url: "vendor trust center — VERIFY"
+  - id: incident_sla_24h
+    item: Incident notification SLA fast enough to beat the 24-hour OSFI clock
+    status: unknown
+    evidence: "No published contractual incident-notification SLA found; verify against current DPA/MSA."
+    source_url: "DPA / MSA — VERIFY"
+  - id: exit_continuity
+    item: Business continuity and exit (data export format, termination assistance)
+    status: partial
+    evidence: "Customer code is exportable via git at any time; formal termination-assistance terms not confirmed from public docs."
+    source_url: "MSA — VERIFY"
+  - id: audit_rights
+    item: Bank's right to audit or commission an independent audit
+    status: partial
+    evidence: "GitHub DPA and Enterprise Agreements carry audit provisions; confirm current clause text before citing."
+    source_url: "DPA — VERIFY"
+  - id: ip_indemnity
+    item: IP indemnity for AI-generated output
+    status: supported
+    evidence: "Copilot Copyright Commitment indemnifies copyright claims on unmodified generated output (Business/Enterprise), uncapped; requires duplicate-detection filter in Block mode."
+    source_url: "https://www.marktechpost.com/2026/09/26/ai-coding-agents-for-enterprise-ip-indemnity-data-residency-and-500-seat-cost-compared/"
+  - id: iso_42001
+    item: AI management posture (ISO 42001 or equivalent)
+    status: unknown
+    evidence: "Microsoft holds ISO 42001 for M365 Copilot; not confirmed as named for GitHub Copilot itself."
+    source_url: "vendor compliance page — VERIFY"
